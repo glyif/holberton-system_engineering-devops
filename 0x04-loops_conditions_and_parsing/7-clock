@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# clock that prints 12 hours and 59 min
+HOURS=0
+MIN=1
+while [ $HOURS -le 12 ]; do
+	echo Hour: $HOURS
+	let MIN=1
+
+	while [ $MIN -le 59 ]; do
+		echo $MIN
+		let MIN=MIN+1
+	done
+
+	let HOURS=HOURS+1
+done
+
+

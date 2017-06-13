@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# prints "Holberton School" on 9th time print "Hi"
+i=1
+while [ $i -le 10 ]; do
+	if [ $i = 9 ]; then
+		echo "Hi"
+	else
+		echo "Holberon School"
+	fi
+	let i=i+1
+done
