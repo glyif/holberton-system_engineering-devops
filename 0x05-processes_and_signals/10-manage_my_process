@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+#manages manage_my_process
+
+PID_FILE="/var/run/my_process.pid"
+
+start_daemon() {
+	./manage_my_process&
+}
+
+stop_daemon() {
+	kill "$(cat $PID_FILE)"
+}
+
+restart_daemon() {
+	stop_daemon
+	start_daemon
+}
+
+case "$1" in
+    
+	start)
+		start_daemon
+		echo "manage_my_process started"
+		;;
+
+    stop)
+		stop_daemon
+		rm /var/run/my_process.pid
+		echo "manage_my_process stopped"
+		;;
+
+    restart)
+		restart_daemon
+		echo "manage_my_process restarted"
+		;;
+    
+	*)
+		echo "Usage: manage_my_process {start|stop|restart}"
+		;;
+esac

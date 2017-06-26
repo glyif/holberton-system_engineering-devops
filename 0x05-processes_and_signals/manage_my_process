@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#writes infintiely to file
+
+FILE="/tmp/my_process"
+
+echo $$ > /var/run/my_process.pid
+
+while true; do
+	echo "I am alive!" >> $FILE
+	sleep 2
+done
+
