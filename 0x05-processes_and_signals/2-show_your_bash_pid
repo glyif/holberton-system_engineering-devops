@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#prints all bash instances
+# shellcheck disable=SC2009
+
+ps axu | grep bash

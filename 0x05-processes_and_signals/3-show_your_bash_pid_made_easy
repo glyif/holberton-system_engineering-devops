@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#pgrep way of finding bash instances
+
+pgrep -l bash
