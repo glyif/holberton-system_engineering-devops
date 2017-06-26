@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# script that basically runs forever
+
+file="/var/run/holbertonscript.pid"
+pid=$$
+
+echo $pid | cat > $file
+
+sigterm() {
+	echo "I hate the kill command"
+	sudo rm $file
+	kill -9 $pid
+}
+
+sigint() {
+	echo "Y U no love me?!"
+}
+
+quit() {
+	sudo rm $file
+	kill -9 $pid
+}
+
+trap sigterm SIGTERM
+trap sigint  SIGINT
+trap quit    SIGQUIT
+
+while true; do
+	echo "To infinity and beyond"
+	sleep 2
+done
