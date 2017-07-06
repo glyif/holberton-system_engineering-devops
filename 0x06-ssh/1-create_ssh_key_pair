@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # creates key pair
 
-ssh-keygen -f holberton -b 4096
+ssh-keygen -f holberton -b 4096 -N Priv123&
