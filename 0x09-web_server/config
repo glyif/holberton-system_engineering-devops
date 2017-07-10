@@ -1,38 +1,17 @@
-user www-data;
-worker_processes 4;
-pid /run/nginx.pid;
-events {
-        worker_connections 768;
-}
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server ipv6only=on;
 
-http {
-        sendfile on;
-        tcp_nopush on;
-        tcp_nodelay on;
-        keepalive_timeout 65;
-        types_hash_max_size 2048;
-        include /etc/nginx/mime.types;
-        default_type application/octet-stream;
-        access_log /var/log/nginx/access.log;
-        error_log /var/log/nginx/error.log;
-        gzip on;
-        gzip_disable "msie6";
+	root /usr/share/nginx/html;
+	index index.html index.htm;
 
-	server {
-        listen 80;
-        server_name localhost;
-        location / {
-            root /home;
-        }
-    
-		error_page 404 /404.html;
-        
-		location = /404.html {
-            root /home;
-        }
-        
-		location /redirect_me {
-            rewrite ^/redirect_me https://www.costco.com permanent;
-        }
-    }
+	server_name localhost;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+
+	location /redirect_me {
+		rewrite ^/redirect_me https://www.costco.com permanent;
+	}
 }

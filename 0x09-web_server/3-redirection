@@ -4,4 +4,8 @@
 sudo apt-get update
 sudo apt-get install -y nginx
 
-sudo sh -c 'echo "Holberton School" > /usr/share/nginx/html/index.html'
+sudo cp config /etc/nginx/sites-available/default
+sudo rm /etc/nginx/sites-enabled/default
+sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+sudo service nginx reload && sudo service nginx restart
