@@ -4,6 +4,7 @@ pid /run/nginx.pid;
 events {
         worker_connections 768;
 }
+
 http {
         sendfile on;
         tcp_nopush on;
@@ -16,18 +17,22 @@ http {
         error_log /var/log/nginx/error.log;
         gzip on;
         gzip_disable "msie6";
-    server {
+
+	server {
         listen 80;
         server_name localhost;
         location / {
             root /home;
         }
-        error_page 404 /404.html;
-        location = /404.html {
+    
+		error_page 404 /404.html;
+        
+		location = /404.html {
             root /home;
         }
-        location /redirect_me {
-            rewrite ^/redirect_me http://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
+        
+		location /redirect_me {
+            rewrite ^/redirect_me https://www.costco.com permanent;
         }
     }
 }
