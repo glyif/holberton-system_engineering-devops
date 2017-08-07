@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-
+#edits host
 wget https://raw.githubusercontent.com/glyif/holberton-system_engineering-devops/master/0x0B-networking_basics_2/hosts.new
 cp -f ~/hosts.new /etc/hosts
