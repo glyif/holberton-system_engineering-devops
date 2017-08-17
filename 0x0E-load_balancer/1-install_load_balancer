@@ -8,4 +8,4 @@ sudo rm /etc/haproxy/haproxy.cfg
 wget https://raw.githubusercontent.com/glyif/holberton-system_engineering-devops/master/0x0E-load_balancer/haproxy.cfg
 sudo mv haproxy.cfg /etc/haproxy/haproxy.cfg
 
-sudo service restart haproxy
+sudo service haproxy restart
