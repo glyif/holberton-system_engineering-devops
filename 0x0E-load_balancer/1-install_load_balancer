@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+sudo add-apt-repository ppa:vbernat/haproxy-1.7 -y
+sudo apt-get update
+sudo apt install -y haproxy
+
+sudo rm /etc/haproxy/haproxy.cfg
+wget
+sudo mv haproxy.cfg /etc/haproxy/haproxy.cfg
+
+sudo service restart haproxy
