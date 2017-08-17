@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
+#sets up load balancer
 
 sudo add-apt-repository ppa:vbernat/haproxy-1.7 -y
 sudo apt-get update
 sudo apt install -y haproxy
 
+echo ENABLED=1 | sudo tee /etc/default/haproxy
 sudo rm /etc/haproxy/haproxy.cfg
 wget https://raw.githubusercontent.com/glyif/holberton-system_engineering-devops/master/0x0E-load_balancer/haproxy.cfg
-wget https://raw.githubusercontent.com/glyif/holberton-system_engineering-devops/master/0x0E-load_balancer/haproxy
 sudo mv haproxy.cfg /etc/haproxy/haproxy.cfg
-sudo mv haproxy /etc/default/haproxy
 
 sudo service haproxy restart
