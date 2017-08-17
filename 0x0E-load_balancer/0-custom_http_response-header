@@ -5,7 +5,7 @@ sudo apt-get update
 sudo apt-get install -y nginx
 
 wget https://raw.githubusercontent.com/glyif/holberton-system_engineering-devops/master/0x0E-load_balancer/config
-sudo cp config /etc/nginx/sites-available/default
+sudo mv config /etc/nginx/sites-available/default
 sudo rm /etc/nginx/sites-enabled/default
 sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
