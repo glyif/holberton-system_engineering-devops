@@ -1,3 +1,5 @@
+# creating a file in /tmp called holberton, setting permissions and content
+
 file { 'holberton':
   ensure  => file,
   path    => '/tmp/holberton',
