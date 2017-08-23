@@ -1,0 +1,33 @@
+global
+        daemon
+        maxconn 2048
+        tune.ssl.default-dh-param 2048
+
+defaults
+        mode http
+        timeout connect 5000ms
+        timeout client 50000ms
+        timeout server 50000ms
+        option forwardfor
+        option http-server-close
+
+frontend www-http
+        bind *:80
+        reqadd X-Forwarded-Proto:\ http
+        default_backend servers
+
+frontend www-https
+   bind *:443 ssl crt /etc/haproxy/certs/glyif.site.pem
+   reqadd X-Forwarded-Proto:\ https
+   acl letsencrypt-acl path_beg /.well-known/acme-challenge/
+   use_backend letsencrypt-backend if letsencrypt-acl
+   default_backend servers
+
+backend servers
+        balance roundrobin
+        redirect scheme https if !{ ssl_fc }
+        server 122-web-01 66.70.186.21:80 check
+        server 122-web-02 54.227.54.155:80 check
+
+backend letsencrypt-backend
+   server letsencrypt 127.0.0.1:54321
