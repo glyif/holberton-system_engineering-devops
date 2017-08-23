@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# subdomains dig
+
+function print_subdomains {
+	if [ $# -eq 2 ]
+	then
+		declare -a sub=("$2")
+	else
+		declare -a sub=("www" "lb-01" "web-01" "web-02")
+	fi
+
+	for i in "${sub[@]}"
+	do
+		result=($(dig "$i.$1" | awk '/ANSWER SECTION:/ {getline;print}'))
+		echo The subdomain "$i" is a "${result[3]}" record and points to "${result[4]}"
+	done
+}
+
+if [ $# -eq 1 ]
+then
+	print_subdomains "$1"
+elif [ $# -eq 2 ]
+then
+	print_subdomains "$1" "$2"
+fi
