@@ -5,6 +5,7 @@ wget https://raw.githubusercontent.com/glyif/holberton-system_engineering-devops
 wget https://raw.githubusercontent.com/glyif/holberton-system_engineering-devops/master/0x13-web_stack_debugging_2/default -O /etc/nginx/sites-available/default
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 sudo chown -R nginx /var/log/nginx /etc/nginx /usr/share/nginx
-sudo chmod u+x /etc/nginx/nginx.conf
+sudo chmod 755 /etc/nginx/nginx.conf
 pkill -9 apache2
+pkill -9 nginx
 su nginx -c nginx
