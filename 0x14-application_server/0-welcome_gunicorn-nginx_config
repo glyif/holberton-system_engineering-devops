@@ -1,7 +1,11 @@
+# server for serving airbnb-onpage
+
 server {
+    # server conf
     listen 80;
     server_name localhost;
 
+	# location for airbnb-onepage conf
     location /airbnb-onepage {
 		rewrite ^/airbnb-onepage(.*) /$1 break;
         proxy_pass http://127.0.0.1:8001;
