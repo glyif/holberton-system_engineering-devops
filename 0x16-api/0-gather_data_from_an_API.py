@@ -38,9 +38,9 @@ def get_tasks(id):
 
     for task in all_tasks:
         all_count = all_count + 1
-        if task["completed"] is True:
+        if task.get("completed") is True:
             complete_count = complete_count + 1
-            list_comp_task.append(task["title"])
+            list_comp_task.append(task.get("title"))
 
     return complete_count, all_count, list_comp_task
 
