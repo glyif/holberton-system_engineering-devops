@@ -8,6 +8,7 @@ import requests
 from collections import namedtuple
 from sys import argv
 import csv
+import json
 
 
 EMPLOYEE_ID = argv[1]
@@ -56,10 +57,28 @@ def export_csv(data, path):
             writer.writerow(line)
 
 
+def export_json(data, path):
+    """
+    exports employee data to json
+    :param data: data to export
+    :param path: path to export to
+    :return:
+    """
+    export_data = {str(EMPLOYEE_ID): []}
+    for task in data[2]:
+        task_data = {"username":data[1],
+                     "completed":task.get("completed"),
+                     "task":task.get("title")}
+        export_data.get(str(EMPLOYEE_ID)).append(task_data)
+
+    with open(path, "w+") as json_file:
+        json.dump(export_data, json_file)
+
+
 if __name__ == "__main__":
     Employee = namedtuple("Employee",
                           ["id", "name", "tasks"])
     e_name = get_name(EMPLOYEE_ID)["name"]
     e_data = get_tasks(EMPLOYEE_ID)
     employee = Employee(id=EMPLOYEE_ID, name=e_name, tasks=e_data)
-    export_csv(employee, "./{}.csv".format(EMPLOYEE_ID))
+    export_json(employee, "./{}.json".format(EMPLOYEE_ID))
