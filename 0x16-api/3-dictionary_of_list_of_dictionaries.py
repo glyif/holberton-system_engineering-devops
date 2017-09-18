@@ -13,6 +13,7 @@ import json
 ALL_TODO_URL = "https://jsonplaceholder.typicode.com/todos/"
 ALL_EMPLOYEE_URL = "https://jsonplaceholder.typicode.com/users/"
 
+
 def all_employees():
     """
     gets all employees, returns list of ids
@@ -77,9 +78,9 @@ def to_dict(data):
     """
     export_data = {str(data[0]): []}
     for task in data[2]:
-        task_data = {"username" : data[1],
-                     "completed" : task.get("completed"),
-                     "task" : task.get("title")}
+        task_data = {"username": data[1],
+                     "completed": task.get("completed"),
+                     "task": task.get("title")}
         export_data.get(str(data[0])).append(task_data)
 
     return export_data
@@ -99,4 +100,3 @@ if __name__ == "__main__":
 
     with open("./todo_all_employees.json", "w+") as json_file:
         json.dump(all_data, json_file)
-        

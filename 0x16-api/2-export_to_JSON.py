@@ -66,9 +66,9 @@ def export_json(data, path):
     """
     export_data = {str(EMPLOYEE_ID): []}
     for task in data[2]:
-        task_data = {"username" : data[1],
-                     "completed" : task.get("completed"),
-                     "task" : task.get("title")}
+        task_data = {"username": data[1],
+                     "completed": task.get("completed"),
+                     "task": task.get("title")}
         export_data.get(str(EMPLOYEE_ID)).append(task_data)
 
     with open(path, "w+") as json_file:
