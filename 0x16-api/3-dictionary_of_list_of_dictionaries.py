@@ -4,10 +4,10 @@ grabs data from json api, exports to csv
 """
 
 
-import requests
 from collections import namedtuple, OrderedDict
 import csv
 import json
+import requests
 
 
 ALL_TODO_URL = "https://jsonplaceholder.typicode.com/todos/"

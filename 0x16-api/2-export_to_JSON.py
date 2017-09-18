@@ -3,12 +3,11 @@
 grabs data from json api, exports to csv
 """
 
-
-import requests
 from collections import namedtuple
-from sys import argv
 import csv
 import json
+import requests
+from sys import argv
 
 
 EMPLOYEE_ID = argv[1]
