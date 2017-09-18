@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 """
-grabs data from json api
+grabs data from json api, exports to csv
 """
 
 
 import requests
-from collections import namedtuple
 from sys import argv
 
 
@@ -36,15 +35,14 @@ def get_tasks(id):
     all_count = 0
     complete_count = 0
     list_comp_task = []
-    Employee = namedtuple("Employee", ["comp_num", "all_num", "title_list"])
 
     for task in all_tasks:
         all_count = all_count + 1
-        if task["completed"]is True:
+        if task["completed"] is True:
             complete_count = complete_count + 1
             list_comp_task.append(task["title"])
 
-    return Employee(complete_count, all_count, list_comp_task)
+    return complete_count, all_count, list_comp_task
 
 
 if __name__ == "__main__":
