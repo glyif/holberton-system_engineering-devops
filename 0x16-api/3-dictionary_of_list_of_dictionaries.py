@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-grabs data from json api, exports to csv
+grabs data from json api, exports to json
+dictonary of lists of dictonaries
 """
 
 
