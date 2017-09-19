@@ -8,11 +8,6 @@ import requests
 from sys import argv
 
 
-EMPLOYEE_ID = argv[1]
-ALL_TODO_URL = "https://jsonplaceholder.typicode.com/todos/"
-ALL_EMPLOYEE_URL = "https://jsonplaceholder.typicode.com/users/"
-
-
 def get_name(id):
     """
     gets employee name from id
@@ -46,6 +41,10 @@ def get_tasks(id):
 
 
 if __name__ == "__main__":
+    EMPLOYEE_ID = argv[1]
+    ALL_TODO_URL = "https://jsonplaceholder.typicode.com/todos/"
+    ALL_EMPLOYEE_URL = "https://jsonplaceholder.typicode.com/users/"
+
     e_name = get_name(EMPLOYEE_ID)["name"]
     e_data = get_tasks(EMPLOYEE_ID)
     print("Employee {} is done with tasks({}/{}):".format(e_name,

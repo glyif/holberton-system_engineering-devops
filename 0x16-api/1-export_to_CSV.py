@@ -9,12 +9,6 @@ import requests
 from sys import argv
 
 
-
-EMPLOYEE_ID = argv[1]
-ALL_TODO_URL = "https://jsonplaceholder.typicode.com/todos/"
-ALL_EMPLOYEE_URL = "https://jsonplaceholder.typicode.com/users/"
-
-
 def get_name(id):
     """
     gets employee name from id
@@ -57,6 +51,10 @@ def export_csv(data, path):
 
 
 if __name__ == "__main__":
+    EMPLOYEE_ID = argv[1]
+    ALL_TODO_URL = "https://jsonplaceholder.typicode.com/todos/"
+    ALL_EMPLOYEE_URL = "https://jsonplaceholder.typicode.com/users/"
+
     Employee = namedtuple("Employee",
                           ["id", "name", "tasks"])
     e_name = get_name(EMPLOYEE_ID)["name"]
