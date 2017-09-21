@@ -5,6 +5,7 @@ recursively get all hot posts
 
 import requests
 
+
 def recurse(subreddit, hot_list=[]):
     """
     recursively get all hot posts
@@ -16,7 +17,10 @@ def recurse(subreddit, hot_list=[]):
 
     params = {"limit": 1}
 
-    r = requests.get("https://www.reddit.com/r/{}/hot.json".format(subreddit), headers=headers, params=params)
+    r = requests.get("https://www.reddit.com/r/{}/hot.json".
+                     format(subreddit),
+                     headers=headers,
+                     params=params)
     response = r.json()
 
     if response.get("error") is not None:
@@ -51,7 +55,9 @@ def real_recurse(subreddit, after_id, hot_list=[]):
     params = {"limit": 100,
               "after": after_id}
 
-    r = requests.get("https://www.reddit.com/r/{}/hot.json".format(subreddit), headers=headers, params=params)
+    r = requests.get("https://www.reddit.com/r/{}/hot.json".format(subreddit),
+                     headers=headers,
+                     params=params)
     response = r.json()
 
     if response.get("error") is not None:
